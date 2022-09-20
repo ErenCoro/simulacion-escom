@@ -50,12 +50,12 @@ class TabularDatasetSummary(DatasetSummary):
 
     def count_categorical(self):
         features = self.list_features()
-        labels = self.list_labels()
-        total = features.copy()
-        total.update(labels)
+        #labels = self.list_labels()
+        #total = features.copy()
+        #total.update(labels)
 
 
-        df = self.df.drop(columns=[col for col in self.df if col not in total])
+        df = self.df.drop(columns=[col for col in self.df if col not in features])
         categorical_data = df.select_dtypes(exclude=[np.number])
         count_categorical = categorical_data.shape[1]
         return count_categorical
@@ -64,12 +64,12 @@ class TabularDatasetSummary(DatasetSummary):
 
     def count_numerical(self):
         features = self.list_features()
-        labels = self.list_labels()
-        total = features.copy()
-        total.update(labels)
+        #labels = self.list_labels()
+        #total = features.copy()
+        #total.update(labels)
 
 
-        df = self.df.drop(columns=[col for col in self.df if col not in total])
+        df = self.df.drop(columns=[col for col in self.df if col not in features])
         numeric_data = df.select_dtypes(include=[np.number])
         count_numeric = numeric_data.shape[1]
         return count_numeric
