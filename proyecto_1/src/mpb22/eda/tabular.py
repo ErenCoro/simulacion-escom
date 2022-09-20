@@ -130,7 +130,7 @@ class TabularDatasetSummary(DatasetSummary):
                 n_null = feature[i].isnull().sum()
                 n_total = feature[i].count()
 
-            values[i] ={'tipo': tipo, 'Mean': mean,  'Mode': mode[0], 'Median': median,  'Std':std,  'n_null': n_null,  'n_total': n_total + n_null}
+            values[i] ={'type': tipo, 'Mean': mean,  'Mode': mode[0], 'Median': median,  'Std':std,  'n_null': n_null,  'n_total': n_total + n_null}
 
 
         if (label_false == 0):
@@ -155,7 +155,7 @@ class TabularDatasetSummary(DatasetSummary):
                     n_null = label[i].isnull().sum()
                     n_total = label[i].count()
                 
-                values[i] ={'tipo': tipo, 'Mean': mean,  'Mode': mode[0], 'Median': median,  'Std':std,  'n_null': n_null,  'n_total': n_total + n_null}
+                values[i] ={'type': tipo, 'Mean': mean,  'Mode': mode[0], 'Median': median,  'Std':std,  'n_null': n_null,  'n_total': n_total + n_null}
 
         return values 
 
