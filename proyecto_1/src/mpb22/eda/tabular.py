@@ -98,17 +98,6 @@ class TabularDatasetSummary(DatasetSummary):
    
         feature =  df_features[features_name]
 
-##################################  LABELS
-
-        df_labels = self.df
-
-        if (self.labels != None):     
-            label_false = 1     
-            label = df_labels[self.labels]
-        
-        else:
-            label_false = 0
-
 ########################################
 
         ## caracteristicas 
@@ -130,33 +119,7 @@ class TabularDatasetSummary(DatasetSummary):
                 n_null = feature[i].isnull().sum()
                 n_total = feature[i].count()
 
-            values[i] ={'type': tipo, 'Mean': mean,  'Mode': mode[0], 'Median': median,  'Std':std,  'n_null': n_null,  'n_total': n_total + n_null}
-
-
-        if (label_false == 0):
-            pass
-
-        if(label_false == 1):
-            for i,j  in zip(label, label.dtypes):
-                if(pd.api.types.is_numeric_dtype(j) == True):
-                    tipo = 'numerical'
-                    mean = label[i].mean()
-                    mode = label[i].mode()
-                    median = label[i].median()
-                    std =  label[i].std()
-                    n_null = label[i].isnull().sum()
-                    n_total = label[i].count()
-                else: 
-                    tipo = 'categorical'
-                    mean = None
-                    mode = label[i].mode()
-                    median = None
-                    std = None 
-                    n_null = label[i].isnull().sum()
-                    n_total = label[i].count()
-                
-                values[i] ={'type': tipo, 'Mean': mean,  'Mode': mode[0], 'Median': median,  'Std':std,  'n_null': n_null,  'n_total': n_total + n_null}
-
+            values[i] ={'type': tipo, 'mean': mean,  'mode': mode[0], 'median': median,  'std':std,  'n_null': n_null,  'n_total': n_total + n_null}
         return values 
 
 
